@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
   `peso` DOUBLE NOT NULL,
   `altura` DOUBLE NOT NULL,
   `sexo` CHAR(1) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `senha` CHAR(8) NOT NULL,
   PRIMARY KEY (`idusuario`))
 ENGINE = InnoDB;
 
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`registro` (
   `atvfisica` DOUBLE NULL,
   `usuario_idusuario` INT NOT NULL,
   PRIMARY KEY (`idregistro`),
-  INDEX `fk_registro_usuario_idx` (`usuario_idusuario` ASC) registro,
+  INDEX `fk_registro_usuario_idx` (`usuario_idusuario` ASC),
   CONSTRAINT `fk_registro_usuario`
     FOREIGN KEY (`usuario_idusuario`)
     REFERENCES `mydb`.`usuario` (`idusuario`)
