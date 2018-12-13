@@ -134,7 +134,7 @@ class registro
         return $this->idregistro;
     }
     public function delete(){
-        $stmt = $this->conn->prepare("DELETE FROM `manutencao` WHERE `idregistro` = :idregistro;");
+        $stmt = $this->conn->prepare("DELETE FROM `mydb` WHERE `idregistro` = :idregistro;");
         $stmt->bindParam(":id", $this->idregistro);
         $stmt->execute();
         return $this->idregistro;
