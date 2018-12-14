@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
 		if($usuario->senha == $_POST['senha']){
 			session_start();
 			$_SESSION['id'] = $usuario->idusuario;
-			header("Location: ../diario.html");
+			header("Location: ../diario.php");
 		} else {
 			echo "Senha incorreta.";
 		}
