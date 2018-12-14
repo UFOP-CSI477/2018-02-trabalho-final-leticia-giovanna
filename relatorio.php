@@ -1,3 +1,63 @@
+<?php
+	
+	require_once 'php/usuario.php';
+
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header("Location: index.html");
+	}
+
+	if(!isset($_GET['caloriaGanha']) || !isset($_GET['caloriaGasta'])){
+		header("Location: diario.php");
+	}
+
+
+	$caloriaGanha = $_GET['caloriaGanha'];
+	$caloriaGasta = $_GET['caloriaGasta'];
+
+	$usuario = new Usuario();
+	$usuario->setIdUsuario($_SESSION['id']);
+	$usuario = $usuario->selectById();
+
+	$imc = ($usuario->peso / (($usuario->altura * $usuario->altura)/100)) * 100;
+	$imc = number_format((float)$imc, 2, '.', '');
+
+	$peso = $usuario->peso;
+	$idade =  $usuario->idade;
+	$sexo =  $usuario->sexo;
+	$calmax = 0;
+
+	if($sexo == "F"){
+		if($idade >= 10 && $idade < 18){
+			$calmax = (12.2 * $peso) + 746; 
+		}
+		else if($idade >= 18 && $idade < 30){
+			$calmax = (14.7 * $peso) + 796;
+		}
+		else if($idade >= 30 && $idade < 60){
+			$calmax = (8.7 * $peso) + 823;
+		}
+		else if($idade >= 60){
+			$calmax = (10.5 * $peso) + 596;
+		}
+	}
+	else if ($sexo == "M"){
+		if($idade >= 10 && $idade < 18){
+			$calmax = (17.5 * $peso) + 651;
+		}
+		else if($idade >= 18 && $idade < 30){
+			$calmax = (15.3 * $peso) + 679;
+		}
+		else if($idade >= 30 && $idade < 60){
+			$calmax = (8.7 * $peso) + 879;
+		}
+		else if($idade >= 60){
+			$calmax = (13.5 * $peso) + 487;
+		}
+	}
+
+
+?>
 
 
 
@@ -53,10 +113,20 @@
 						                <th scope="col">Calorias Totais</th>
 						            </tr>
 	                			</thead>
+	                			<thbody class="thbody-light">
+						            <tr>
+						            	<td scope="col"><?php echo $usuario->nome; ?></td>		
+						                <td scope="col"><?php echo $imc; ?></td>
+						                <td scope="col"><?php echo $calmax . " calorias"; ?></td>
+						                <td scope="col"><?php echo $caloriaGanha; ?></td>
+						                <td scope="col"><?php echo $caloriaGasta; ?></td>
+						                <td scope="col"><?php echo $caloriaGanha - $caloriaGasta; ?></td>
+						            </tr>
+	                			</thbody>
 	                		</table>
 	                		
                 			<div class="form-btn">
-								<button name="fechar" class="submit-btn">Fechar</button>
+								<a href="diario.php" name="fechar" class="submit-btn">Fechar</a>
 							</div>
 	                	</div>
 	                </div>

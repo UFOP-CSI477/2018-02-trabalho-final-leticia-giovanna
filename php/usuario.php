@@ -66,6 +66,26 @@ class Usuario
         return $this->conn->lastInsertId();
     } 
 
+    public function countEmail(){
+        $stmt = $this->conn->prepare("SELECT count(*) FROM `usuario` WHERE `email` = :email;");
+        $stmt->bindParam(":email", $this->email);
+        return $stmt->execute();
+    }
+
+    public function selectByEmail(){
+        $stmt = $this->conn->prepare("SELECT * FROM `usuario` WHERE `email` = :email;");
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function selectById(){
+        $stmt = $this->conn->prepare("SELECT * FROM `usuario` WHERE `idusuario` = :idusuario;");
+        $stmt->bindParam(":idusuario", $this->idusuario);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }  
+
 }
 
 ?>

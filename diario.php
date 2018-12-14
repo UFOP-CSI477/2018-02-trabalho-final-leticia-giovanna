@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header("Location: index.html");
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +41,7 @@
 				<div class="row" >
 					<div class="col-md-8" align="content">
 						<div class="booking-form" >
-							<form method="post" action="relatorio.html">
+							<form method="get" action="relatorio.php">
 								<div class="titulo-cadastro">
 									<h2>DIÁRIO DE CALORIAS</h2>
 									<br>
@@ -42,15 +49,15 @@
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
-											<span class="form-label">Calorias Ganhas</span>
-											<input name="caloriaGanha" class="form-control" type="number" placeholder="00" required>
+											<span class="form-label">Calorias Ingeridas</span>
+											<input name="caloriaGanha" min="0" step="100" class="form-control" type="number" placeholder="00" required>
 										</div>
 									</div>
 				            	<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
 											<span class="form-label">Calorias Gastas</span>
-											<input name="caloriaGasta" class="form-control" type="number" placeholder="00" required>
+											<input name="caloriaGasta" min="0" step="100" class="form-control" type="number" placeholder="00" required>
 										</div>
 									</div>
 								</div>

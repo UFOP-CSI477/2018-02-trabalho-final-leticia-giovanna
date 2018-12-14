@@ -42,16 +42,16 @@
                 </div>
                 <div class="col-md-4 col-md-pull-7">
                     <div class="booking-form">
-                        <form>
+                        <form name="login" action="php/login.php" method="post">
                             <div class="form-group">
                                 <span class="form-label">Login</span>
-                                <input class="form-control" type="text" placeholder="Digite seu login">
+                                <input name="email" class="form-control" type="text" placeholder="Digite seu login">
                                 <span class="form-label">Senha</span>
-                                <input class="form-control" type="password" placeholder="****************">
+                                <input name="senha" class="form-control" type="password" placeholder="****************">
                             </div>
 
                             <div class="form-btn">
-                                <button class="submit-btn">Entrar</button>
+                                <button name="login" type="submit" class="submit-btn">Entrar</button>
 
                             </div>
                             <br>
