@@ -5,20 +5,20 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema fit
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema fit
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `fit` DEFAULT CHARACTER SET utf8 ;
+USE `fit` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
+-- Table `fit`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
-  `idusuario` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `fit`.`usuario` (
+  `idusuario` INT AUTO_INCREMENT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `idade` DATE NOT NULL,
   `peso` DOUBLE NOT NULL,
@@ -31,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`registro`
+-- Table `fit`.`registro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`registro` (
+CREATE TABLE IF NOT EXISTS `fit`.`registro` (
   `idregistro` INT NOT NULL,
   `kcal` DOUBLE NULL,
   `agua` DOUBLE NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`registro` (
   INDEX `fk_registro_usuario_idx` (`usuario_idusuario` ASC),
   CONSTRAINT `fk_registro_usuario`
     FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `mydb`.`usuario` (`idusuario`)
+    REFERENCES `fit`.`usuario` (`idusuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

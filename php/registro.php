@@ -7,7 +7,7 @@
  */
 require_once 'database.php';
 
-class registro
+class Registro
 {
    private $idregistro;
    private $kcal;
@@ -113,7 +113,7 @@ class registro
 
 
     public function insert(){
-        $stmt = $this->conn->prepare("INSERT INTO `mydb`(`idregistro`, `kcal`, `agua`, `atvfisica`, `usuario_idusuario`) VALUES (:idregistro, :kcal, :agua, :atvfisica, :usuario_idusuario);");
+        $stmt = $this->conn->prepare("INSERT INTO `registro`(`idregistro`, `kcal`, `agua`, `atvfisica`, `usuario_idusuario`) VALUES (:idregistro, :kcal, :agua, :atvfisica, :usuario_idusuario);");
         $stmt->bindParam(":idregistro",$this->idregistro);
         $stmt->bindParam(":kcal", $stmt->kcal);
         $stmt->bindParam(":agua",$stmt->agua);
@@ -124,7 +124,7 @@ class registro
     }
     public function edit()
     {
-        $stmt = $this->conn->prepare("UPDATE `mydb` SET `idregistro` = :idregistro, `kcal` = :kcal, `agua` = :agua, `atvfisica` = :atvfisica, `usuario_idusuario` = :usuario_idusuario, `update_at` = :update_at WHERE `idregistro` = :idregistro;");
+        $stmt = $this->conn->prepare("UPDATE `registro` SET `idregistro` = :idregistro, `kcal` = :kcal, `agua` = :agua, `atvfisica` = :atvfisica, `usuario_idusuario` = :usuario_idusuario, `update_at` = :update_at WHERE `idregistro` = :idregistro;");
         $stmt->bindParam(":idregistro",$this->idregistro);
         $stmt->bindParam(":kcal", $stmt->kcal);
         $stmt->bindParam(":agua", $stmt->agua);
@@ -134,7 +134,7 @@ class registro
         return $this->idregistro;
     }
     public function delete(){
-        $stmt = $this->conn->prepare("DELETE FROM `manutencao` WHERE `idregistro` = :idregistro;");
+        $stmt = $this->conn->prepare("DELETE FROM `registro` WHERE `idregistro` = :idregistro;");
         $stmt->bindParam(":id", $this->idregistro);
         $stmt->execute();
         return $this->idregistro;
