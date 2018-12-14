@@ -31,26 +31,36 @@
 	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
-				<div class="col-md-12">
-					<div class="booking-form" align="section-center">
-
-						<div class="titulo-cadastro">
-							<h2>DIÁRIO DE CALORIAS</h2>
-							<br>
-						</div>	
-						<div class="col-md-2">
-
-							<div class="form-group">
-		                  		<label>Quantidade de calorias Ingeridas</label>
-		                  		<input type="number" name="caloriaIngerida" class="form-control">
-		                	</div>
-		            	</div>
-		            	<div class="col-md-2">
-		                	<div class="form-group">
-		                  		<label>Quantidade de calorias Gastas</label>
-		                 		<input type="number" name="caloriaGasta" class="form-control">
-		                	</div>						
-						</div>
+				<div class="row" >
+					<div class="col-md-8" align="content">
+						<div class="booking-form" >
+							<form method="post" action="relatorio.html">
+								<div class="titulo-cadastro">
+									<h2>DIÁRIO DE CALORIAS</h2>
+									<br>
+								</div>	
+								<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="form-label">Calorias Ganhas</span>
+											<input name="caloriaGanha" class="form-control" type="number" placeholder="00" required>
+										</div>
+									</div>
+				            	<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<span class="form-label">Calorias Gastas</span>
+											<input name="caloriaGasta" class="form-control" type="number" placeholder="00" required>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-btn">
+										<button name="cadastra" type="submit" class="submit-btn">Concluído</button>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
